@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://cb5minion123"]
+
+[ext_resource type="Texture2D" uid="uid://cokirhir4jfkp" path="res://Animation/Undead/png/summonAppear.png" id="1_appear"]
+[ext_resource type="Texture2D" uid="uid://2mqv7m2o1yvb" path="res://Animation/Undead/png/summonDeath.png" id="2_death"]
+[ext_resource type="Texture2D" uid="uid://ck8lm3xe1872v" path="res://Animation/Undead/png/summonIdle.png" id="3_idle"]
+[ext_resource type="Script" uid="uid://bf4m5gcae0hbb" path="res://Scripts/undead_minion.gd" id="4_script"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_app_0"]
+atlas = ExtResource("1_appear")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_app_1"]
+atlas = ExtResource("1_appear")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_app_2"]
+atlas = ExtResource("1_appear")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_app_3"]
+atlas = ExtResource("1_appear")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_app_4"]
+atlas = ExtResource("1_appear")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_app_5"]
+atlas = ExtResource("1_appear")
+region = Rect2(100, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dea_0"]
+atlas = ExtResource("2_death")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dea_1"]
+atlas = ExtResource("2_death")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dea_2"]
+atlas = ExtResource("2_death")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dea_3"]
+atlas = ExtResource("2_death")
+region = Rect2(0, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dea_4"]
+atlas = ExtResource("2_death")
+region = Rect2(50, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dea_5"]
+atlas = ExtResource("2_death")
+region = Rect2(100, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idl_0"]
+atlas = ExtResource("3_idle")
+region = Rect2(0, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idl_1"]
+atlas = ExtResource("3_idle")
+region = Rect2(50, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idl_2"]
+atlas = ExtResource("3_idle")
+region = Rect2(100, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idl_3"]
+atlas = ExtResource("3_idle")
+region = Rect2(150, 0, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_minion"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_app_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_app_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_app_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_app_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_app_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_app_5")
+}],
+"loop": false,
+"name": &"appear",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dea_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dea_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dea_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dea_3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dea_4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dea_5")
+}],
+"loop": false,
+"name": &"dead",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idl_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idl_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idl_2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idl_3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_minion"]
+radius = 8.0
+height = 24.0
+
+[node name="Undead_Minion" type="CharacterBody2D" unique_id=508630759 groups=["enemies"]]
+script = ExtResource("4_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=597153888]
+texture_filter = 1
+scale = Vector2(1.2, 1.2)
+sprite_frames = SubResource("SpriteFrames_minion")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=743618528]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_minion")
