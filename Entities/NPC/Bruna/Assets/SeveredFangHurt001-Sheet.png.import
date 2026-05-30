@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bdn86477hl8c1"
-path="res://.godot/imported/Dung2.png-42fc1a2384c8990cae87da045a7f540e.ctex"
+uid="uid://ran4jqeq1xbl"
+path="res://.godot/imported/SeveredFangHurt001-Sheet.png-78224c556ddf4425f71e404dfb8eedf3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Levels/Dung2.png"
-dest_files=["res://.godot/imported/Dung2.png-42fc1a2384c8990cae87da045a7f540e.ctex"]
+source_file="res://Entities/NPC/Bruna/Assets/SeveredFangHurt001-Sheet.png"
+dest_files=["res://.godot/imported/SeveredFangHurt001-Sheet.png-78224c556ddf4425f71e404dfb8eedf3.ctex"]
 
 [params]
 

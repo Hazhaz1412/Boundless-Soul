@@ -56,6 +56,13 @@ func _ready() -> void:
 	# Kết nối các tín hiệu thay đổi khung hình và hoàn thành hoạt ảnh để kiểm soát combo và lăn
 	animated_sprite.frame_changed.connect(_on_frame_changed)
 	animated_sprite.animation_finished.connect(_on_animation_finished)
+	
+	# Phát tín hiệu toàn cục thông báo Player đã sẵn sàng trong scene
+	EventBus.player_spawned.emit(self)
+	
+	# Tự động cập nhật giới hạn camera theo kích thước map mới
+	update_camera_limits()
+	EventBus.level_transition_completed.connect(func(_level_name): update_camera_limits())
 
 # Hàm cấu hình tự động các nút di chuyển (WASD + Arrows), Lăn (Space) và Đỡ (F)
 func _setup_input_actions() -> void:
@@ -435,3 +442,71 @@ func _spawn_dash_effect() -> void:
 	var offset_dist = 24.0
 	effect.global_position = global_position - roll_direction * offset_dist + Vector2(0, 10)
 	effect.flip_h = animated_sprite.flip_h
+
+# --- HỆ THỐNG GIỚI HẠN CAMERA TỰ ĐỘNG (AUTO CAMERA LIMITS) ---
+func update_camera_limits() -> void:
+	if not is_inside_tree() or not camera:
+		return
+		
+	# Chờ 1 frame ngắn để các Node trong scene mới được load hoàn toàn vào Tree
+	await get_tree().process_frame
+	
+	if not is_inside_tree():
+		return
+	
+	# 1. Tìm node thuộc nhóm "camera_limit" để lấy giới hạn tùy biến trước (nếu người dùng tự vẽ)
+	var limit_nodes = get_tree().get_nodes_in_group("camera_limit")
+	if limit_nodes.size() > 0:
+		var limit_node = limit_nodes[0]
+		if limit_node is Sprite2D:
+			_set_camera_limits_from_sprite(limit_node)
+			return
+		elif limit_node is ReferenceRect:
+			camera.limit_left = int(limit_node.global_position.x)
+			camera.limit_top = int(limit_node.global_position.y)
+			camera.limit_right = int(limit_node.global_position.x + limit_node.size.x * limit_node.global_scale.x)
+			camera.limit_bottom = int(limit_node.global_position.y + limit_node.size.y * limit_node.global_scale.y)
+			print("📸 Camera: Đã cập nhật giới hạn từ ReferenceRect")
+			return
+			
+	# 2. Tự động tìm kiếm đệ quy Sprite2D làm nền của scene hiện tại (kể cả khi bị lồng nhiều lớp)
+	var current_scene = get_tree().current_scene
+	if not current_scene:
+		return
+		
+	var map_sprite = _find_map_sprite(current_scene)
+	if map_sprite:
+		_set_camera_limits_from_sprite(map_sprite)
+
+func _find_map_sprite(node: Node) -> Sprite2D:
+	if node is Sprite2D and node.texture != null:
+		# Nhận diện ảnh nền map lớn thông qua kích thước texture (> 200px)
+		if node.texture.get_width() > 200:
+			return node
+	for child in node.get_children():
+		var found = _find_map_sprite(child)
+		if found:
+			return found
+	return null
+
+func _set_camera_limits_from_sprite(sprite: Sprite2D) -> void:
+	var texture = sprite.texture
+	if not texture:
+		return
+		
+	var sprite_size = texture.get_size() * sprite.scale
+	
+	if sprite.centered:
+		camera.limit_left = int(sprite.global_position.x - sprite_size.x / 2)
+		camera.limit_top = int(sprite.global_position.y - sprite_size.y / 2)
+		camera.limit_right = int(sprite.global_position.x + sprite_size.x / 2)
+		camera.limit_bottom = int(sprite.global_position.y + sprite_size.y / 2)
+	else:
+		camera.limit_left = int(sprite.global_position.x)
+		camera.limit_top = int(sprite.global_position.y)
+		camera.limit_right = int(sprite.global_position.x + sprite_size.x)
+		camera.limit_bottom = int(sprite.global_position.y + sprite_size.y)
+		
+	print("📸 Camera: Tự động giới hạn theo Sprite2D (", sprite.name, "): ", 
+		  "L:", camera.limit_left, " T:", camera.limit_top, 
+		  " R:", camera.limit_right, " B:", camera.limit_bottom)

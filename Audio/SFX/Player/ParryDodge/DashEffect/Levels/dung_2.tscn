@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" path="res://Audio/SFX/Player/ParryDodge/DashEffect/Levels/Tilesets/Dung2.png" id="1_byop4"]
 [ext_resource type="Texture2D" path="res://Audio/SFX/Player/ParryDodge/DashEffect/Levels/Tilesets/gai.png" id="2_ko4o6"]
+[ext_resource type="Script" uid="uid://ccovudhfoax24" path="res://Shared/Components/spawn_point.gd" id="3_rli8k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_byop4"]
 size = Vector2(85, 232.375)
@@ -46,3 +47,7 @@ stretch_mode = 1
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1001196057]
 position = Vector2(15.27273, 14.303029)
 shape = SubResource("RectangleShape2D_ko4o6")
+
+[node name="SpawnPoint_Entrance" type="Marker2D" parent="." unique_id=423994938]
+script = ExtResource("3_rli8k")
+spawn_id = "from_dung_1"

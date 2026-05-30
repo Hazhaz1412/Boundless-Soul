@@ -352,24 +352,25 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ppyta"]
-height = 45.0
+radius = 7.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=10160273]
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_pmp2f")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=475344270]
 texture_filter = 1
-scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_dpmuy")
 animation = &"block"
 frame_progress = 0.19903679
 offset = Vector2(5, -20)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2105340682]
+position = Vector2(4, 2)
 shape = SubResource("CapsuleShape2D_ppyta")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1796582394]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(2.4, 2.4)
 limit_left = -475
 limit_top = -300
 limit_right = 475

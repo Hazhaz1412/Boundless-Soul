@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8ywrjpniyq8l"
-path="res://.godot/imported/gai.png-76fa46d2b6341a005fb8fe476e359fca.ctex"
+uid="uid://hwfqbduw8sjt"
+path="res://.godot/imported/Hang_rao_1.png-dc714d4c8cfed8b46c366986e1a765d6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Levels/gai.png"
-dest_files=["res://.godot/imported/gai.png-76fa46d2b6341a005fb8fe476e359fca.ctex"]
+source_file="res://World/Levels/Assets/Hang_rao_1.png"
+dest_files=["res://.godot/imported/Hang_rao_1.png-dc714d4c8cfed8b46c366986e1a765d6.ctex"]
 
 [params]
 

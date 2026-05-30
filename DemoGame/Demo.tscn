@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://b73qustcpy8lk"]
+
+[ext_resource type="PackedScene" uid="uid://dv7d5m8e1rk1r" path="res://World/Levels/dung_1.tscn" id="1_kiml7"]
+[ext_resource type="Script" uid="uid://b5ylus80q50tt" path="res://Shared/Components/transition_trigger.gd" id="2_150cb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3or7"]
+size = Vector2(106, 212)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5b8in"]
+size = Vector2(20.25, 95.5)
+
+[node name="Sprite2D" unique_id=1653782790 instance=ExtResource("1_kiml7")]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" parent_id_path=PackedInt32Array(66879030) index="4" unique_id=2050815917]
+position = Vector2(542, 39)
+shape = SubResource("RectangleShape2D_n3or7")
+
+[node name="Area2D" type="Area2D" parent="." index="1" unique_id=448664565]
+script = ExtResource("2_150cb")
+target_level_path = "uid://dejw1jnlxbbys"
+target_spawn_id = "from_dung_1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=1428611543]
+position = Vector2(247.375, 12.25)
+shape = SubResource("RectangleShape2D_5b8in")

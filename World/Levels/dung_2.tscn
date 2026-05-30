@@ -1,39 +1,34 @@
 [gd_scene format=3 uid="uid://dejw1jnlxbbys"]
 
-[ext_resource type="Texture2D" uid="uid://bdn86477hl8c1" path="res://Audio/SFX/Player/ParryDodge/DashEffect/Levels/Tilesets/Dung2.png" id="1_byop4"]
-[ext_resource type="Texture2D" uid="uid://8ywrjpniyq8l" path="res://Audio/SFX/Player/ParryDodge/DashEffect/Levels/Tilesets/gai.png" id="2_ko4o6"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_byop4"]
-size = Vector2(85, 232.375)
+[ext_resource type="Texture2D" uid="uid://bdn86477hl8c1" path="res://World/Levels/Assets/Dung2.png" id="1_byop4"]
+[ext_resource type="Texture2D" uid="uid://8ywrjpniyq8l" path="res://World/Levels/Assets/gai.png" id="2_ko4o6"]
+[ext_resource type="Script" uid="uid://ccovudhfoax24" path="res://Shared/Components/spawn_point.gd" id="3_gcfge"]
+[ext_resource type="Script" uid="uid://b5ylus80q50tt" path="res://Shared/Components/transition_trigger.gd" id="4_pa71k"]
+[ext_resource type="Texture2D" uid="uid://c4h3jtyrm4qmu" path="res://World/Levels/Assets/hang_rao.png" id="5_jd014"]
+[ext_resource type="PackedScene" uid="uid://6qo8el7vb372" path="res://Entities/Player/Player.tscn" id="5_player"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ko4o6"]
 size = Vector2(46.060616, 48)
 
-[node name="Sprite2D" type="Sprite2D" unique_id=237283108]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_byop4"]
+size = Vector2(94.66667, 251.52084)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sc3ro"]
+size = Vector2(130, 185.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hpoje"]
+size = Vector2(100, 87.5)
+
+[node name="Node2D" type="Node2D" unique_id=1455450023]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=237283108]
 texture = ExtResource("1_byop4")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=942134010]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=537658061]
-build_mode = 1
-polygon = PackedVector2Array(-448, -237, -451, 285, 290, 285, 292, 301, 379, 299, 379, 291, 449, 291, 453, -253, 415, -253, 418, -275, 351, -273, 349, -248, 168, -247, 169, -272, 93, -273, 94, -242, -341, -240, -340, -264, -425, -260, -422, -235)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=632860240]
-polygon = PackedVector2Array(-453, 71, -136, 68, -131, 194, -388, 193, -387, 149, -450, 150)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=154689922]
-position = Vector2(18, -189)
-shape = SubResource("RectangleShape2D_byop4")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=722503430]
-position = Vector2(15, 188)
-shape = SubResource("RectangleShape2D_byop4")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="." unique_id=586294020]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Sprite2D" unique_id=586294020]
 position = Vector2(-17, -15)
 scale = Vector2(2.0624998, 2.0624998)
 
-[node name="TextureRect" type="TextureRect" parent="StaticBody2D2" unique_id=1272233251]
+[node name="TextureRect" type="TextureRect" parent="Sprite2D/StaticBody2D2" unique_id=1272233251]
 texture_filter = 1
 texture_repeat = 2
 offset_left = -8.242426
@@ -43,6 +38,59 @@ offset_bottom = 36.84848
 texture = ExtResource("2_ko4o6")
 stretch_mode = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2" unique_id=1001196057]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D2" unique_id=1001196057]
 position = Vector2(15.27273, 14.303029)
 shape = SubResource("RectangleShape2D_ko4o6")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D" unique_id=942134010]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/StaticBody2D" unique_id=537658061]
+build_mode = 1
+polygon = PackedVector2Array(-448, -237, -449.7988, 75.989655, -451, 285, 290, 285, 292, 301, 379, 299, 379, 291, 449, 291, 453, -253, 415, -253, 418, -275, 351, -273, 349, -248, 168, -247, 169, -272, 93, -273, 94, -242, -341, -240, -340, -264, -425, -260, -422, -235)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Sprite2D/StaticBody2D" unique_id=632860240]
+polygon = PackedVector2Array(-453, 62.5, -130, 61.5, -131, 194, -388, 193, -387, 149, -450, 150)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" unique_id=154689922]
+position = Vector2(13.999998, -169.09375)
+shape = SubResource("RectangleShape2D_byop4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Sprite2D/StaticBody2D" unique_id=722503430]
+position = Vector2(15, 188)
+shape = SubResource("RectangleShape2D_byop4")
+
+[node name="Area2D" type="Area2D" parent="Sprite2D" unique_id=324047118]
+position = Vector2(-516, -410.6667)
+scale = Vector2(0.6666667, 0.6666667)
+script = ExtResource("4_pa71k")
+target_level_path = "res://World/Levels/dung_1.tscn"
+target_spawn_id = "from_dung_2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D" unique_id=138904396]
+position = Vector2(199, 144)
+shape = SubResource("RectangleShape2D_sc3ro")
+
+[node name="SpawnPoint_Entrance" type="Marker2D" parent="Sprite2D" unique_id=1885017729]
+position = Vector2(-381.5, -180.5)
+scale = Vector2(0.6666667, 0.6666667)
+script = ExtResource("3_gcfge")
+spawn_id = "from_dung_1"
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Sprite2D" unique_id=109397559]
+
+[node name="HangRao" type="Sprite2D" parent="Sprite2D/StaticBody2D3" unique_id=937864488]
+texture_filter = 1
+position = Vector2(-80, 157)
+scale = Vector2(3.0312502, 3.1614583)
+texture = ExtResource("5_jd014")
+region_enabled = true
+region_rect = Rect2(16, 24, 32, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D3" unique_id=1366593510]
+position = Vector2(-82, 151.75)
+shape = SubResource("RectangleShape2D_hpoje")
+
+[node name="CharacterBody2D" parent="." unique_id=10160273 instance=ExtResource("5_player")]
+z_index = 1
+position = Vector2(-766.6666, -417.3333)
+scale = Vector2(1.3333334, 1.3333334)

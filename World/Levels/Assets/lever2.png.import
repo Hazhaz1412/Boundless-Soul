@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tq7nkxhw83ne"
-path="res://.godot/imported/Dungeon_Tiles.png-abce31c814f90a091d6c7c1e3c64813f.ctex"
+uid="uid://cifd87u33mads"
+path="res://.godot/imported/lever2.png-f2bd3c15f57ebdd3301660276c4317d4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://World/Levels/Dungeon_Tiles.png"
-dest_files=["res://.godot/imported/Dungeon_Tiles.png-abce31c814f90a091d6c7c1e3c64813f.ctex"]
+source_file="res://World/Levels/Assets/lever2.png"
+dest_files=["res://.godot/imported/lever2.png-f2bd3c15f57ebdd3301660276c4317d4.ctex"]
 
 [params]
 
