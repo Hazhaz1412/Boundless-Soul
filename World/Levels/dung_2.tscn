@@ -1,5 +1,6 @@
-[gd_scene format=3 uid="uid://dejw1jnlxbbys"]
+[gd_scene load_steps=10 format=3 uid="uid://dejw1jnlxbbys"]
 
+[ext_resource type="Script" path="res://World/Levels/dung_2.gd" id="1_dung_2_script"]
 [ext_resource type="Texture2D" uid="uid://bdn86477hl8c1" path="res://World/Levels/Assets/Dung2.png" id="1_byop4"]
 [ext_resource type="Texture2D" uid="uid://8ywrjpniyq8l" path="res://World/Levels/Assets/gai.png" id="2_ko4o6"]
 [ext_resource type="Script" uid="uid://ccovudhfoax24" path="res://Shared/Components/spawn_point.gd" id="3_gcfge"]
@@ -20,15 +21,16 @@ size = Vector2(130, 185.75)
 size = Vector2(100, 87.5)
 
 [node name="Node2D" type="Node2D" unique_id=1455450023]
+script = ExtResource("1_dung_2_script")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=237283108]
 texture = ExtResource("1_byop4")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Sprite2D" unique_id=586294020]
+[node name="TrapGai" type="StaticBody2D" parent="Sprite2D" unique_id=586294020]
 position = Vector2(-17, -15)
 scale = Vector2(2.0624998, 2.0624998)
 
-[node name="TextureRect" type="TextureRect" parent="Sprite2D/StaticBody2D2" unique_id=1272233251]
+[node name="TextureRect" type="TextureRect" parent="Sprite2D/TrapGai" unique_id=1272233251]
 texture_filter = 1
 texture_repeat = 2
 offset_left = -8.242426
@@ -38,7 +40,7 @@ offset_bottom = 36.84848
 texture = ExtResource("2_ko4o6")
 stretch_mode = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D2" unique_id=1001196057]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/TrapGai" unique_id=1001196057]
 position = Vector2(15.27273, 14.303029)
 shape = SubResource("RectangleShape2D_ko4o6")
 

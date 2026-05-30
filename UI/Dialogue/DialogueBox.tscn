@@ -1,0 +1,121 @@
+[gd_scene load_steps=6 format=3 uid="uid://n8kvtgibgy3m"]
+
+[ext_resource type="Script" path="res://UI/Dialogue/dialogue_box.gd" id="1_script"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_main"]
+bg_color = Color(0.08, 0.02, 0.02, 0.85)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.75, 0.1, 0.1, 0.9)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+corner_radius_bottom_right = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_name"]
+bg_color = Color(0.12, 0.02, 0.02, 0.95)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_color = Color(0.75, 0.1, 0.1, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+
+[sub_resource type="LabelSettings" id="LabelSettings_name"]
+font_size = 15
+font_color = Color(0.95, 0.15, 0.15, 1)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_prompt"]
+font_size = 12
+font_color = Color(0.7, 0.7, 0.7, 0.8)
+
+[node name="DialogueBox" type="CanvasLayer"]
+process_mode = 3
+layer = 100
+script = ExtResource("1_script")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -350.0
+offset_top = -185.0
+offset_right = 350.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -130.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_main")
+
+[node name="NamePanel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 0.0
+offset_right = 180.0
+offset_bottom = 30.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_name")
+
+[node name="NameLabel" type="Label" parent="Control/NamePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Name"
+label_settings = SubResource("LabelSettings_name")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Avatar" type="TextureRect" parent="Control"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 20.0
+offset_top = 45.0
+offset_right = 120.0
+offset_bottom = 145.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="TextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 45.0
+offset_right = 675.0
+offset_bottom = 145.0
+theme_override_colors/default_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_font_sizes/normal_font_size = 15
+text = "Dialogue goes here..."
+
+[node name="PromptLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -180.0
+offset_top = -25.0
+offset_right = -20.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "[Nhấn Z để tiếp tục]"
+label_settings = SubResource("LabelSettings_prompt")
+horizontal_alignment = 2

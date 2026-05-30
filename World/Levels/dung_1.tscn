@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://dv7d5m8e1rk1r"]
 
+[ext_resource type="Script" uid="uid://csraa5tprwt3j" path="res://World/Levels/dung_1.gd" id="1_dung_1_script"]
 [ext_resource type="Script" uid="uid://b5ylus80q50tt" path="res://Shared/Components/transition_trigger.gd" id="1_e6dkf"]
 [ext_resource type="Texture2D" uid="uid://bofg3f4mj4xp3" path="res://World/Levels/Assets/start_1_fix.png" id="1_ivu55"]
 [ext_resource type="Script" uid="uid://ccovudhfoax24" path="res://Shared/Components/spawn_point.gd" id="2_spawn"]
 [ext_resource type="PackedScene" uid="uid://6qo8el7vb372" path="res://Entities/Player/Player.tscn" id="3_player"]
+[ext_resource type="PackedScene" uid="uid://bct0b6c0dmiad" path="res://Entities/NPC/Bruna/Bruna.tscn" id="5_3lcgh"]
 [ext_resource type="Texture2D" uid="uid://c4h3jtyrm4qmu" path="res://World/Levels/Assets/hang_rao.png" id="5_ivu55"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ppyta"]
@@ -31,6 +33,7 @@ size = Vector2(25.125, 166)
 size = Vector2(58, 169)
 
 [node name="Node2D" type="Node2D" unique_id=1175985321]
+script = ExtResource("1_dung_1_script")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1653782790]
 texture_filter = 1
@@ -50,7 +53,7 @@ position = Vector2(3, -263)
 shape = SubResource("RectangleShape2D_ppyta")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/StaticBody2D" unique_id=90505705]
-polygon = PackedVector2Array(-473, -209, -472, -59, -446, -59, -445, -213, -346, -210, -344, -58, -319, -61, -317, -216, -216, -212, -216, -57, -190, -60, -188, -209, -88, -211, -88, -57, -56, -61, -61, -212, 42, -211, 40, -55, 69, -57, 67, -218, 168, -215, 167, -59, 199, -60, 195, -214, 298, -215, 297, -59, 324, -59, 325, -217, 426, -213, 425, -61, 451, -62, 485, -61, 487, -284)
+polygon = PackedVector2Array(-473, -209, -472, -59, -446, -59, -445, -213, -346, -210, -344, -58, -319, -61, -317, -216, -216, -212, -216, -61, -191, -62, -188, -209, -88, -211, -86, -62, -63, -62, -61, -212, 42, -211, 42, -62, 68, -62, 67, -218, 168, -215, 165, -64, 195, -63, 195, -214, 298, -215, 297, -66, 322, -66, 325, -217, 426, -213, 425, -61, 451, -62, 485, -61, 487, -284)
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Sprite2D/StaticBody2D" unique_id=817174274]
 polygon = PackedVector2Array(-474, 215, -477, 126, -439, 133, -443, 220, -347, 218, -345, 129, -316, 130, -313, 220, -217, 217, -218, 133, -190, 134, -187, 218, -82, 221, -85, 130, -56, 131, -62, 221, 34, 218, 39, 130, 71, 132, 69, 216, 169, 218, 164, 129, 196, 132, 194, 221, 297, 217, 293, 129, 324, 131, 323, 218, 427, 222, 422, 133, 450, 133, 484, 112, 481, 308)
@@ -83,17 +86,20 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("2_spawn")
 spawn_id = "from_dung_1_2"
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="Sprite2D" unique_id=513446794]
+[node name="PlayerDoor" type="StaticBody2D" parent="Sprite2D" unique_id=513446794]
 
-[node name="HangRao2" type="Sprite2D" parent="Sprite2D/StaticBody2D2" unique_id=243732558]
+[node name="HangRao2" type="Sprite2D" parent="Sprite2D/PlayerDoor" unique_id=243732558]
 texture_filter = 1
 position = Vector2(-135, -53)
 scale = Vector2(0.7890625, 0.7890625)
 texture = ExtResource("5_ivu55")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/StaticBody2D2" unique_id=2030069709]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/PlayerDoor" unique_id=2030069709]
 position = Vector2(-134.5, -56)
 shape = SubResource("RectangleShape2D_bypau")
+
+[node name="Bruna" parent="Sprite2D" unique_id=2052274383 instance=ExtResource("5_3lcgh")]
+position = Vector2(220, -4.5)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=448664565]
 script = ExtResource("1_e6dkf")

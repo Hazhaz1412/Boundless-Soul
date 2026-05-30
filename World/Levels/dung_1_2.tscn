@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://b5ylus80q50tt" path="res://Shared/Components/transition_trigger.gd" id="2_7bqg7"]
 [ext_resource type="PackedScene" uid="uid://6qo8el7vb372" path="res://Entities/Player/Player.tscn" id="2_qqu0w"]
 [ext_resource type="Script" uid="uid://ccovudhfoax24" path="res://Shared/Components/spawn_point.gd" id="3_7bqg7"]
+[ext_resource type="Texture2D" uid="uid://dtug11ef6ebxn" path="res://World/Levels/Assets/lever2.png" id="4_0slex"]
+[ext_resource type="Script" uid="uid://4j3yr11qfxwa" path="res://World/Levels/lever.gd" id="5_lever_script"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihx15"]
 size = Vector2(20, 170.5)
@@ -46,7 +48,10 @@ radius = 4.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2sojf"]
 size = Vector2(58, 169)
 
-[node name="Node2D" type="Node2D" unique_id=1852819585]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u7o2"]
+size = Vector2(12.857147, 12.1428585)
+
+[node name="Node2D2" type="Node2D" unique_id=1852819585]
 texture_filter = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=840397087]
@@ -126,6 +131,20 @@ shape = SubResource("RectangleShape2D_2sojf")
 position = Vector2(108.5, 7.5)
 script = ExtResource("3_7bqg7")
 spawn_id = "from_dung_1_2"
+
+[node name="Lever1" type="Sprite2D" parent="Sprite2D" unique_id=1213718386]
+texture_filter = 1
+position = Vector2(-98.5, 7)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_0slex")
+script = ExtResource("5_lever_script")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Sprite2D/Lever1" unique_id=1504014967]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Lever1/StaticBody2D" unique_id=31503405]
+position = Vector2(-3.5714264, 3.9285698)
+scale = Vector2(0.9999998, 0.9999998)
+shape = SubResource("RectangleShape2D_1u7o2")
 
 [node name="CharacterBody2D" parent="." unique_id=10160273 instance=ExtResource("2_qqu0w")]
 position = Vector2(-44, 203)
