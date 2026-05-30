@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dv7d5m8e1rk1r"]
+
+[ext_resource type="Texture2D" uid="uid://2bbag3jia3b4" path="res://Audio/SFX/Player/ParryDodge/DashEffect/Levels/Tilesets/start_1.png" id="1_4hi0m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppyta"]
+size = Vector2(972.5, 102.5)
+
+[node name="Sprite2D" type="Sprite2D" unique_id=1653782790]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("1_4hi0m")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=66879030]
+position = Vector2(-2.5, -6.5)
+scale = Vector2(0.5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=804314198]
+position = Vector2(-1, 272)
+shape = SubResource("RectangleShape2D_ppyta")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1755480536]
+position = Vector2(3, -263)
+shape = SubResource("RectangleShape2D_ppyta")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=90505705]
+polygon = PackedVector2Array(-473, -209, -472, -59, -446, -59, -445, -213, -346, -210, -344, -58, -319, -61, -317, -216, -216, -212, -216, -57, -190, -60, -188, -209, -88, -211, -88, -57, -56, -61, -61, -212, 42, -211, 40, -55, 69, -57, 67, -218, 168, -215, 167, -59, 199, -60, 195, -214, 298, -215, 297, -59, 324, -59, 325, -217, 426, -213, 425, -61, 451, -62, 485, -61, 487, -284)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=817174274]
+polygon = PackedVector2Array(-474, 215, -477, 126, -439, 133, -443, 220, -347, 218, -345, 129, -316, 130, -313, 220, -217, 217, -218, 133, -190, 134, -187, 218, -82, 221, -85, 130, -56, 131, -62, 221, 34, 218, 39, 130, 71, 132, 69, 216, 169, 218, 164, 129, 196, 132, 194, 221, 297, 217, 293, 129, 324, 131, 323, 218, 427, 222, 422, 133, 450, 133, 484, 112, 481, 308)

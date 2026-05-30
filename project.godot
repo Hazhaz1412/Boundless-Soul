@@ -10,10 +10,21 @@ config_version=5
 
 [application]
 
-config/name="TestGame1"
+config/name="Blind Souls"
 run/main_scene="uid://u643qdqaffge"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*uid://b2nshn2uxr6j3"
+GameManager="*uid://dthg22ig7ukns"
+SaveManager="*uid://cp1qtmpfhgk3s"
+AudioManager="*uid://ba05cno0mnmkc"
+
+[dotnet]
+
+project/assembly_name="Blind Souls"
 
 [physics]
 

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://8knva6xr2rvr"]
+
+[ext_resource type="Texture2D" uid="uid://71ve4m8w2kn5" path="res://Audio/SFX/Player/ParryDodge/DashEffect/Levels/Tilesets/Assets/Pixelarium - Interfaces Bundle - Free version/Pack Content/DarkMode Interface/Player interface/Player Status/Player status bars frame for 9-slice/spr_player_status_3bars_frame.png" id="1_j4k1e"]
+[ext_resource type="Texture2D" uid="uid://bd1fmjdoktbd4" path="res://Audio/SFX/Player/ParryDodge/DashEffect/Levels/Tilesets/Assets/Pixel Bar Starter Pack/Bar_Body_2.png" id="2_4baxu"]
+[ext_resource type="Texture2D" uid="uid://b5y7qkrysav5i" path="res://Audio/SFX/Player/ParryDodge/DashEffect/Levels/Tilesets/Assets/Pixel Bar Starter Pack/Bar_Fill_Red.png" id="3_atjbv"]
+[ext_resource type="Texture2D" uid="uid://b3eo2mkh0kpca" path="res://Audio/SFX/Player/ParryDodge/DashEffect/Levels/Tilesets/Assets/Pixel Bar Starter Pack/Bar_Fill_Blue.png" id="4_7x36m"]
+[ext_resource type="Texture2D" uid="uid://dsknf5fxcfmqd" path="res://Audio/SFX/Player/ParryDodge/DashEffect/Levels/Tilesets/Assets/Pixel Bar Starter Pack/Bar_Fill_Green.png" id="5_drm0t"]
+[ext_resource type="Script" uid="uid://dgsld3bnlehh8" path="res://UI/HUD/combat_ui.gd" id="6_combat_ui"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=211715623]
+script = ExtResource("6_combat_ui")
+scale = Vector2(2.5, 2.5)
+transform = Transform2D(2.5, 0, 0, 2.5, 0, 0)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2099956051]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1662323789]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1618593916]
+z_as_relative = false
+layout_mode = 2
+texture = ExtResource("1_j4k1e")
+expand_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=253421217]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BarContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/TextureRect" unique_id=1200186255]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 11.0
+offset_right = 214.0
+offset_bottom = 52.0
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="HealthBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/TextureRect/BarContainer" unique_id=520445461]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 15
+stretch_margin_right = 15
+texture_over = ExtResource("2_4baxu")
+texture_progress = ExtResource("3_atjbv")
+
+[node name="ManaBar" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/TextureRect/BarContainer" unique_id=2131267849]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 15
+stretch_margin_right = 15
+texture_over = ExtResource("2_4baxu")
+texture_progress = ExtResource("4_7x36m")
+
+[node name="Stamina" type="TextureProgressBar" parent="MarginContainer/HBoxContainer/TextureRect/BarContainer" unique_id=1465317061]
+custom_minimum_size = Vector2(100, 10)
+layout_mode = 2
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 15
+stretch_margin_right = 15
+texture_over = ExtResource("2_4baxu")
+texture_progress = ExtResource("5_drm0t")
